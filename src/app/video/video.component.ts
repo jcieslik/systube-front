@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-video',
@@ -6,17 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./video.component.scss']
 })
 export class VideoComponent implements OnInit {
+  video1Playing = true;
+
+  @ViewChild('video1', {static: true})
+  video1!: ElementRef;
+
+  @ViewChild('video2', {static: true})
+  video2!: ElementRef;
+
+  currentTime: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
-    let vid: HTMLVideoElement = document.getElementById("video") as HTMLVideoElement;
     setTimeout(() => {
-      let currentTime = vid.currentTime;
-      vid.src = "https://localhost:7297/api/Video/GetFileById2"
-      vid.currentTime = currentTime;
-      vid.load();
-      vid.play();
-    }, 10000);
+      this.currentTime = this.video1.nativeElement.currentTime;
+      this.video2.nativeElement.currentTime = this.currentTime;
+      this.video2.nativeElement.onplaying = () => {
+        this.video1Playing = false;
+        this.video1.nativeElement.pause();
+      }
+      this.video2.nativeElement.play();
+    }, 5000);
   }
 }
