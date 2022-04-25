@@ -1,1 +1,49 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akshar">
+
+<mat-toolbar color="primary" class="my-toolbar">
+  <!--
+  <button mat-icon-button color="secondary" (click)="drawer.toggle()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </button>
+  -->
+  <div class="logo-bg">
+    <div class="logo-shape">
+      <div class="logo-shape-wheel1"></div>
+      <div class="logo-shape-wheel2"></div>
+      <div class="logo-shape1"></div>
+      <div class="logo-shape2"></div>
+      <div class="logo-shape3"></div>
+      <span>SysTube</span>
+    </div>
+  </div>
+
+
+  <div class="search-wrap">
+    <div class="search">
+       <input type="text" class="search-term">
+        <button mat-text-button class="search-button">
+          Search
+        </button>
+    </div>
+ </div>
+
+</mat-toolbar>
+<!--
+<mat-drawer-container class="app-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <div class="page-content"> 
+    -->
 <router-outlet></router-outlet>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<!--
+        </div>
+</mat-drawer-container>
+-->
