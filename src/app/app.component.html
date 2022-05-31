@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akshar">
-
+<div style="display:flex; flex-flow: column; background-color:red;">
 <mat-toolbar color="primary" class="my-toolbar">
   <!--
   <button mat-icon-button color="secondary" (click)="drawer.toggle()">
@@ -28,6 +28,14 @@
  </div>
 
 </mat-toolbar>
+ <mat-grid-list cols="3">
+  <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <router-outlet class="align-to-navbar"></router-outlet>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+  <app-movies-list class="align-to-navbar"></app-movies-list>  
+  </mat-grid-tile>
+</mat-grid-list>
 <!--
 <mat-drawer-container class="app-container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side">
@@ -41,9 +49,8 @@
 
   <div class="page-content"> 
     -->
-<router-outlet></router-outlet>
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
 <!--
         </div>
 </mat-drawer-container>
--->
+--></div>

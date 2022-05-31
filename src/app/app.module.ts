@@ -14,15 +14,18 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MoviesListComponent } from './movies-list/movies-list.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideoComponent
+    VideoComponent,
+    MoviesListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     MatInputModule,
     FormsModule,
+    MatGridListModule,
     
   ],
   providers: [],
