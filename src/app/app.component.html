@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akshar">
-<div style="display:flex; flex-flow: column; background-color:red;">
+
 <mat-toolbar color="primary" class="my-toolbar">
   <!--
   <button mat-icon-button color="secondary" (click)="drawer.toggle()">
@@ -20,22 +20,15 @@
 
   <div class="search-wrap">
     <div class="search">
-       <input type="text" class="search-term">
-        <button mat-text-button class="search-button">
-          Search
-        </button>
+      <input type="text" class="search-term">
+      <button mat-text-button class="search-button">
+        Search
+      </button>
     </div>
- </div>
+  </div>
 
 </mat-toolbar>
- <mat-grid-list cols="3">
-  <mat-grid-tile [colspan]="2" [rowspan]="1">
-    <router-outlet class="align-to-navbar"></router-outlet>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="1">
-  <app-movies-list class="align-to-navbar"></app-movies-list>  
-  </mat-grid-tile>
-</mat-grid-list>
+<router-outlet class="align-to-navbar"></router-outlet>
 <!--
 <mat-drawer-container class="app-container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side">
@@ -53,4 +46,4 @@
 <!--
         </div>
 </mat-drawer-container>
---></div>
+-->

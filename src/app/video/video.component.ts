@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,11 +11,11 @@ export class VideoComponent implements OnInit {
 
   video1!: ElementRef;
 
-  @ViewChild('video1', { static: false }) set content(content: ElementRef) {
-    if(content) { // initially setter gets called with undefined
-        this.video1 = content;
+ @ViewChild('video1', { static: false }) set content(content: ElementRef) {
+    if(content) { 
+      this.video1 = content;
     }
- }
+  }
 
   @ViewChild('video2', {static: false})
   video2!: ElementRef;

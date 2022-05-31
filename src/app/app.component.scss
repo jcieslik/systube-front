@@ -1,10 +1,8 @@
 .my-toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-height: 56px;
-  max-height: 56px;
-  z-index:999;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; 
+  z-index: 9999; 
 }
 .logo-bg {
   transform: scale(35%);
@@ -153,10 +151,4 @@
 .search-button:active {
   border: 2px solid #8a0284;
   background: #4f2445;
-}
-
-.align-to-navbar {
-  position: absolute; 
-  top: 56px;
-   left: 0
 }
