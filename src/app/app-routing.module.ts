@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
-  { path: 'video', component: VideoComponent },
+  { path: 'video/:id', component: VideoComponent },
 ];
 
 @NgModule({
