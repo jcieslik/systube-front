@@ -18,6 +18,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MoviesListComponent } from './movies-list/movies-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,6 +32,7 @@ import { MoviesListComponent } from './movies-list/movies-list.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSliderModule,
     MatToolbarModule,
     MatSidenavModule,
