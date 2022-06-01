@@ -30,6 +30,8 @@ export class VideoComponent implements OnInit {
 
   videoSource = "";
 
+  video: VideoDto;
+
   constructor(private route: ActivatedRoute,
     private videoService: VideoService) { }
 
@@ -40,13 +42,19 @@ export class VideoComponent implements OnInit {
       }
       this.id = params['id'];
     });
+    this.videoService.getVideoById(this.id)
+      .subscribe((result) => {
+        this.video = result;
+      })
     this.videoService.getVideosForSidebar(this.id)
       .subscribe((result) => {
         result.forEach(element => {
           element.thumbnail = "data:image/png;base64," + element.thumbnail;
         });
         this.sidebarVideos = result;
-      })
+      });
+    this.videoService.incrementWatched(this.id)
+      .subscribe();
     this.videoSource = "http://localhost:5297/api/Video/GetFileById?fileId=" + this.id;
     setTimeout(() => {
       this.currentTime = this.video1.nativeElement.currentTime;

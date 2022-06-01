@@ -25,4 +25,12 @@ import { environment } from "src/environments/environment";
     getVideosForSidebar(id: number): Observable<any> {
       return this.http.get(`${environment.apiUrl}/api/Video/GetVideosForSidebar?currentVideoId=${id}`,  { withCredentials: true });
     }
+
+    incrementWatched(id: number) {
+      return this.http.put(`${environment.apiUrl}/api/Video/IncrementWatched?videoId=${id}`,  { withCredentials: true });
+    }
+
+    getVideoById(id: number) {
+      return this.http.get(`${environment.apiUrl}/api/Video/GetVideoById?videoId=${id}`,  { withCredentials: true });
+    }
 }

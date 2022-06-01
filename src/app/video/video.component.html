@@ -4,13 +4,19 @@
       [muted]="true">
       <source [src]="videoSource" type="video/mp4">
     </video>
+    <mat-card>
+      <mat-card-title>{{video.title}}</mat-card-title>
+      <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
+      <mat-card-content>{{video.description}}</mat-card-content>
+    </mat-card>
   </div>
   <div class="videos">
     <div *ngFor="let video of sidebarVideos" style="cursor: pointer;" [routerLink]="['/video/'+video.id]">
-      <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 5px; margin-top: 5px;">
-      <b style="font-size: 22px;">{{video.title}}</b>
-      <br>
-      <span style="font-size: 14px; font-weight: lighter;">Obejrzane {{video.watchedCounter}} razy</span>
+      <mat-card>
+        <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 8px;">
+        <mat-card-title>{{video.title}}</mat-card-title>
+        <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
+      </mat-card>
     </div>
   </div>
 </div>
@@ -23,9 +29,11 @@
   </div>
   <div class="videos-small">
     <div *ngFor="let video of sidebarVideos" style="cursor: pointer;" [routerLink]="['/video/'+video.id]">
-      <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 5px; margin-top: 5px;">
-      <b style="font-size: 22px;">{{video.title}}</b> <br>
-      <span style="font-size: 14px; font-weight: lighter;">Obejrzane {{video.watchedCounter}} razy</span>
+      <mat-card>
+        <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 8px;">
+        <mat-card-title>{{video.title}}</mat-card-title>
+        <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
+      </mat-card>
     </div>
   </div>
 </div>
