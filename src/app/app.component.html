@@ -20,7 +20,7 @@
 
   <div class="search-wrap">
     <div class="search">
-      <input type="text" class="search-term">
+      <input type="text" [(ngModel)]="searchPhrase" class="search-term">
       <button mat-text-button class="search-button" (click)="updatePhrase()">
         Search
       </button>

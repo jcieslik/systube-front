@@ -26,8 +26,6 @@ export class HomeComponent implements OnInit {
       this.searchService.listenForPhraseChange().subscribe(value => {
         this.model.pageIndex = 1;
         this.getPaginatedVideos(value);
-        console.log("ty kurwo")
-        console.log(value)
 
       })
     }
