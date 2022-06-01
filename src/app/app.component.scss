@@ -6,6 +6,12 @@
 }
 .logo-bg {
   transform: scale(35%);
+  cursor:pointer;
+}
+
+.logo-bg:active {
+  color:gray;
+  border-color: #000000;
 }
 
 .logo-shape{
