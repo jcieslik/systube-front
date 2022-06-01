@@ -46,7 +46,9 @@ export class VideoComponent implements OnInit {
           element.thumbnail = "data:image/png;base64," + element.thumbnail;
         });
         this.sidebarVideos = result;
-      })
+      });
+    this.videoService.incrementWatched(this.id)
+      .subscribe();
     this.videoSource = "http://localhost:5297/api/Video/GetFileById?fileId=" + this.id;
     setTimeout(() => {
       this.currentTime = this.video1.nativeElement.currentTime;
