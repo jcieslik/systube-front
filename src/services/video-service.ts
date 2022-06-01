@@ -17,7 +17,7 @@ import { environment } from "src/environments/environment";
       return this.http.post(`${environment.apiUrl}/api/Video/GetVideosPaginated?PageIndex=${body?.pageIndex}&PageSize=${body?.pageSize}&OrderBy=${body?.orderBy}&SearchString=${searchPhrase}`, null,  { withCredentials: true });
     }
 
-    getVideosForSidebar(): Observable<any> {
-      return this.http.get(`${environment.apiUrl}/api/Video/GetVideosForSidebar`,  { withCredentials: true });
+    getVideosForSidebar(id: number): Observable<any> {
+      return this.http.get(`${environment.apiUrl}/api/Video/GetVideosForSidebar?currentVideoId=${id}`,  { withCredentials: true });
     }
 }

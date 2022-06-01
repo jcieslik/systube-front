@@ -34,19 +34,19 @@ export class VideoComponent implements OnInit {
     private videoService: VideoService) { }
 
   ngOnInit(): void {
-    this.videoService.getVideosForSidebar()
-      .subscribe((result) => {
-        result.forEach(element => {
-          element.thumbnail = "data:image/png;base64," + element.thumbnail;
-        });
-        this.sidebarVideos = result;
-      })
     this.route.params.subscribe(params => {
       if (this.id) {
         window.location.reload();
       }
       this.id = params['id'];
     });
+    this.videoService.getVideosForSidebar(this.id)
+      .subscribe((result) => {
+        result.forEach(element => {
+          element.thumbnail = "data:image/png;base64," + element.thumbnail;
+        });
+        this.sidebarVideos = result;
+      })
     this.videoSource = "http://localhost:5297/api/Video/GetFileById?fileId=" + this.id;
     setTimeout(() => {
       this.currentTime = this.video1.nativeElement.currentTime;
