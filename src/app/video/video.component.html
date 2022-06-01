@@ -13,7 +13,7 @@
   <div class="videos">
     <div *ngFor="let video of sidebarVideos" style="cursor: pointer;" [routerLink]="['/video/'+video.id]">
       <mat-card>
-        <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 5px; margin-top: 5px;">
+        <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 8px;">
         <mat-card-title>{{video.title}}</mat-card-title>
         <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
       </mat-card>
