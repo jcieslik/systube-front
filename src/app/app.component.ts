@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { SpinnerService } from 'src/services/spinner-service';
-import { VideoService } from 'src/services/video-service';
-import { PaginationProperties } from './models/pagination-properties';
-import { VideoDtoPaginatedList } from './models/video-dto-paginated-list';
-
+import { SearchService } from 'src/services/search-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,32 +15,9 @@ export class AppComponent {
 
   searchPhrase: string = ""; 
 
-  videosPaginated!: VideoDtoPaginatedList;
+  constructor(private searchService: SearchService){}
 
-  model: PaginationProperties = {
-    pageIndex: 1,
-    pageSize: 8
-  };
-
-  constructor(private videoService: VideoService,
-    private spinner: SpinnerService,){
-    this.getPaginatedVideos()
+  updatePhrase() {
+    this.searchService.changeSearchPhrase(this.searchPhrase);
   }
-
-  getPaginatedVideos() {
-    this.spinner.show()
-
-    this.videoService.getVideosPaginated(this.model, this.searchPhrase)
-    .subscribe((result) => {
-        this.videosPaginated = result;
-        this.spinner.hide()
-    })
-  }
-
-  searchVideosByPhrase() {
-    this.model.pageIndex = 0;
-
-  }
-
-
 }

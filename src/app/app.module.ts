@@ -20,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoService } from 'src/services/video-service';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -27,7 +28,8 @@ import { VideoService } from 'src/services/video-service';
   declarations: [
     AppComponent,
     VideoComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
