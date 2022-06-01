@@ -6,7 +6,10 @@
     </video>
   </div>
   <div class="videos">
-
+    <div *ngFor="let video of sidebarVideos">
+      <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 5px; margin-top: 5px;">
+      <b style="font-size: 21px;">{{video.title}}</b>
+    </div>
   </div>
 </div>
 <div class="video-small">
@@ -16,7 +19,10 @@
       <source [src]="videoSource" type="video/mp4">
     </video>
   </div>
-  <div class="videos">
-
+  <div class="videos-small">
+    <div *ngFor="let video of sidebarVideos">
+      <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 5px; margin-top: 5px;">
+      <b style="font-size: 21px;">{{video.title}}</b>
+    </div>
   </div>
 </div>

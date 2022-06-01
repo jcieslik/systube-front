@@ -6,6 +6,6 @@ export interface VideoDto {
   thumbnailFilepath?: null | string;
   watchedCounter?: null | number;
   secondsLength?: null | number;
-  thumbnail?: null | Int32Array;
+  thumbnail?: null | string;
   availableResolutions?: null | Resolution[];
 }

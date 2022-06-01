@@ -19,6 +19,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VideoService } from 'src/services/video-service';
 
 
 
@@ -42,7 +43,6 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     FormsModule,
     MatGridListModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

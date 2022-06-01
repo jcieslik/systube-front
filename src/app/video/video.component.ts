@@ -1,5 +1,7 @@
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { VideoService } from 'src/services/video-service';
+import { VideoDto } from '../models/video-dto';
 
 @Component({
   selector: 'app-video',
@@ -10,6 +12,8 @@ export class VideoComponent implements OnInit {
   video1Playing = true;
 
   video1!: ElementRef;
+
+  sidebarVideos: VideoDto[] = [];
 
  @ViewChild('video1', { static: false }) set content(content: ElementRef) {
     if(content) { 
@@ -26,9 +30,21 @@ export class VideoComponent implements OnInit {
 
   videoSource = "";
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    private videoService: VideoService) { }
 
   ngOnInit(): void {
+    this.videoService.getVideosForSidebar()
+      .subscribe((result) => {
+        result.forEach(element => {
+          element.thumbnail = "data:image/png;base64," + element.thumbnail;
+        });
+        this.sidebarVideos = result;
+        this.sidebarVideos.push(...result);
+        this.sidebarVideos.push(...result);
+        this.sidebarVideos.push(...result);
+        this.sidebarVideos.push(...result);
+      })
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
