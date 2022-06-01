@@ -9,6 +9,8 @@
     <div *ngFor="let video of sidebarVideos">
       <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 5px; margin-top: 5px;">
       <b style="font-size: 21px;">{{video.title}}</b>
+      <br>
+      <span style="font-size: 14px; font-weight: lighter;">Obejrzane {{video.watchedCounter}} razy</span>
     </div>
   </div>
 </div>
