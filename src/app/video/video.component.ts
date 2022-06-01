@@ -30,6 +30,8 @@ export class VideoComponent implements OnInit {
 
   videoSource = "";
 
+  video: VideoDto;
+
   constructor(private route: ActivatedRoute,
     private videoService: VideoService) { }
 
@@ -40,6 +42,10 @@ export class VideoComponent implements OnInit {
       }
       this.id = params['id'];
     });
+    this.videoService.getVideoById(this.id)
+      .subscribe((result) => {
+        this.video = result;
+      })
     this.videoService.getVideosForSidebar(this.id)
       .subscribe((result) => {
         result.forEach(element => {
