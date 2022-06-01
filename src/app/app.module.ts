@@ -22,6 +22,8 @@ import { MoviesListComponent } from './movies-list/movies-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VideoService } from 'src/services/video-service';
 import { HomeComponent } from './home/home.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SpinnerInterceptor } from './http-interceptors/spinner-interceptor';
 
 
 

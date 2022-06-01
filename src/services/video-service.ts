@@ -13,13 +13,10 @@ import { environment } from "src/environments/environment";
   
     constructor(private http: HttpClient) { }
   
-    getVideosPaginated(body?: PaginationProperties, searchPhrase?: string) {
-      console.log("searchstring:" + searchPhrase, "body:" + body)
-      let request = `${environment.apiUrl}/api/Video/GetVideosPaginated?PageIndex=${body?.pageIndex}&PageSize=${body?.pageSize}&OrderBy=${body?.orderBy}`
-      if( searchPhrase.length === 0) { console.log("fuckup"); request += `&SearchString=${"x"}` }
-      else { console.log("fuckup"); request += `&SearchString=${searchPhrase}` }
+    getVideosPaginated(body?: PaginationProperties, searchPhrase: string = ' ') {
+      let request = `${environment.apiUrl}/api/Video/GetVideosPaginated?PageIndex=${body?.pageIndex}&PageSize=${body?.pageSize}&OrderBy=${body?.orderBy}&searchString=${searchPhrase}`
 
-      return this.http.post(request, null, {withCredentials: true });
+      return this.http.get(request,  { withCredentials: true });
     }
 
     getVideosForSidebar(id: number): Observable<any> {
