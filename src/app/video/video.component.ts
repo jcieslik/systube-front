@@ -40,12 +40,11 @@ export class VideoComponent implements OnInit {
           element.thumbnail = "data:image/png;base64," + element.thumbnail;
         });
         this.sidebarVideos = result;
-        this.sidebarVideos.push(...result);
-        this.sidebarVideos.push(...result);
-        this.sidebarVideos.push(...result);
-        this.sidebarVideos.push(...result);
       })
     this.route.params.subscribe(params => {
+      if (this.id) {
+        window.location.reload();
+      }
       this.id = params['id'];
     });
     this.videoSource = "http://localhost:5297/api/Video/GetFileById?fileId=" + this.id;
