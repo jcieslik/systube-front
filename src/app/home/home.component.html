@@ -1,8 +1,9 @@
 
-<div class="video-small">
-  <div class="videos-small">
+<div class="gallery-background">
+  
+<div *ngIf="videosPaginated && videosPaginated.items" class="gallery">
     <div *ngFor="let video of videosPaginated.items" style="cursor: pointer;" [routerLink]="['/video/'+video.id]">
-      <mat-card>
+      <mat-card style="margin: 0px 5px 5px 0px">
         <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 8px;">
         <mat-card-title>{{video.title}}</mat-card-title>
         <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
@@ -10,3 +11,10 @@
     </div>
   </div>
 </div>
+
+<mat-paginator #paginator [length]="collectionLength"
+              [pageSize]="1"
+              [pageSizeOptions]="[8, 16]"
+              (page)="pageEvent = handlePage($event)">
+</mat-paginator>
+

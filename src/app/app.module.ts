@@ -24,8 +24,7 @@ import { VideoService } from 'src/services/video-service';
 import { HomeComponent } from './home/home.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SpinnerInterceptor } from './http-interceptors/spinner-interceptor';
-
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -50,6 +49,7 @@ import { SpinnerInterceptor } from './http-interceptors/spinner-interceptor';
     FormsModule,
     NgxSpinnerModule,
     MatGridListModule,
+    MatPaginatorModule
   ],
   providers: [
     {

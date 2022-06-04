@@ -6,10 +6,23 @@
   flex-direction: row;
   flex-wrap: wrap;
 
-  border-radius: 3% 0 3% 0 ;
   @media (max-width: 101px) {
       display: none;
   }
+}
+
+.gallery-background {
+  background: #eee;
+  margin: 0px;
+  width: 100%;
+  height: auto;
+}
+
+.gallery {
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 480px;
 }
 
 .videos-small {
@@ -18,4 +31,41 @@
   margin: 5px;
   padding: 5px;
   border-radius: 66%;
+  display:flex;
+}
+
+.gallery > img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: .25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .75);
+}
+
+.gallery > img:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 720px) {
+  .gallery > img {
+    max-width: 16%;
+    max-height: 9%;
+    padding: 20px 20px 0 0;
+    /* Agora sem padding-left */
+  }
+
+  .gallery__item {
+    width: calc((100% / 3) - 20px);
+    /* Agora que o container .gallery não possui
+    mais padding-left, e os item ímpares serão os
+    que ficaram na lateral esquerda, retiro 20px
+    de cada item, e adiciono como margin-left
+    nos ímpares abaixo */
+  }
+
+  .gallery__item:nth-child(odd) {
+    margin-left: 20px;
+    /* Cada item ímpar, terá uma
+    margem esquerda de 20px */
+  }
 }

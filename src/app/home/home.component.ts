@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { SearchService } from 'src/services/search-service';
 import { SpinnerService } from 'src/services/spinner-service';
 import { VideoService } from 'src/services/video-service';
@@ -10,37 +11,52 @@ import { VideoDtoPaginatedList } from '../models/video-dto-paginated-list';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
-  videosPaginated!: VideoDtoPaginatedList;
+  videosPaginated: VideoDtoPaginatedList;
+  collectionLength: number = 0;
+  pageEvent: PageEvent;
 
-  model: PaginationProperties = {
-    pageIndex: 1,
-    pageSize: 8,
-    orderBy: "title"
-  };
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  //model: PaginationProperties = {
+  //  pageIndex: 1,
+  //  pageSize: 8,
+  //  orderBy: "title"
+  //};
 
   constructor(private videoService: VideoService,
     private searchService: SearchService,
-    private spinner: SpinnerService,) {
-      this.searchService.listenForPhraseChange().subscribe(value => {
-        this.model.pageIndex = 1;
-        this.getPaginatedVideos(value);
+    private spinner: SpinnerService,) {}
 
-      })
-    }
+  ngAfterViewInit() {
+    this.searchService.listenForPhraseChange().subscribe(value => {
+      this.paginator.pageIndex = 0;
+      this.getPaginatedVideos(value);
+
+    })
+  }
+
+  public handlePage(e: any) {
+    this.getPaginatedVideos(this.searchService.searchPhrase)
+    return e;
+  }
 
   ngOnInit(): void {
   }
 
-  
+
   getPaginatedVideos(phrase?: string) {
     this.spinner.show()
 
-    this.videoService.getVideosPaginated(this.model, phrase)
-    .subscribe((result) => {
+    this.videoService.getVideosPaginated({ pageIndex: this.paginator.pageIndex,  pageSize: this.paginator.pageSize,  orderBy: "title"}, phrase)
+      .subscribe((result) => {
         this.videosPaginated = result;
+        this.collectionLength = this.videosPaginated.totalCount;
+        this.videosPaginated.items.forEach(element => {
+          element.thumbnail = "data:image/png;base64," + element.thumbnail;
+        });
         this.spinner.hide()
-    })
+      })
   }
 }
