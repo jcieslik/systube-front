@@ -1,20 +1,35 @@
+<mat-card class="gallery-background">
 
-<div class="gallery-background">
-  
-<div *ngIf="videosPaginated && videosPaginated.items" class="gallery">
-    <div *ngFor="let video of videosPaginated.items" style="cursor: pointer;" [routerLink]="['/video/'+video.id]">
-      <mat-card style="margin: 0px 5px 5px 0px">
-        <img [src]="video.thumbnail" style="width: 100%; height: auto; margin-bottom: 8px;">
+  <mat-card-title *ngIf="searchPhrase.length > 0;else elseblock1">
+    <h1>Wyniki wyszukiwania:</h1>
+  </mat-card-title>
+  <ng-template #elseblock1>
+    <mat-card-title>
+      <h1>Nagrania dostępne w serwisie:</h1>
+    </mat-card-title>
+  </ng-template>
+  <div *ngIf="videosPaginated && videosPaginated.items.length > 0;else elseblock2" class="gallery">
+    <div *ngFor="let video of videosPaginated.items" class="gallery__item" style="align-self: stretch;"
+      [routerLink]="['/video/'+video.id]">
+      <mat-card style="margin: 0px 5px 5px 0px;">
+        <img [src]="video.thumbnail">
         <mat-card-title>{{video.title}}</mat-card-title>
         <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
       </mat-card>
     </div>
   </div>
-</div>
+  <ng-template #elseblock2>
+    <mat-card>
+      <mat-card-title style="text-align: center;">
+        <h1>Przykro nam, nie znaleziono wyników dla szukanej frazy: <b style="color:blueviolet">{{searchPhrase}}</b></h1>
+      </mat-card-title>
+    </mat-card>
+  </ng-template>
 
-<mat-paginator #paginator [length]="collectionLength"
-              [pageSize]="1"
-              [pageSizeOptions]="[8, 16]"
-              (page)="pageEvent = handlePage($event)">
-</mat-paginator>
 
+  <div [hidden]="videosPaginated && !videosPaginated.items.length" style="margin-top: 10px">
+    <mat-paginator #paginator [length]="collectionLength" [pageSize]="8" [pageSizeOptions]="[8, 16]"
+      (page)="pageEvent = handlePage($event)">
+    </mat-paginator>
+  </div>
+</mat-card>

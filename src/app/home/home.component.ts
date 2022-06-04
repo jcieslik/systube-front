@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   videosPaginated: VideoDtoPaginatedList;
   collectionLength: number = 0;
   pageEvent: PageEvent;
+  searchPhrase: string = "";
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.searchService.listenForPhraseChange().subscribe(value => {
+      this.searchPhrase = value;
       this.paginator.pageIndex = 0;
       this.getPaginatedVideos(value);
 
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   public handlePage(e: any) {
-    this.getPaginatedVideos(this.searchService.searchPhrase)
+    this.getPaginatedVideos(this.searchPhrase)
     return e;
   }
 
