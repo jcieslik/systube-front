@@ -12,8 +12,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
     constructor(private spinner: NgxSpinnerService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!(req.url.indexOf('Video/GetVideoByIdAndResolution') > -1)) {
-            console.log(this.spinner)
+        if (!(req.url.indexOf('Video/GetVideoByIdAndResolution') > -1) && !(req.url.indexOf('Video/TestConnection') > -1)) {
             this.spinner.show()
             this.count++;
         } else {

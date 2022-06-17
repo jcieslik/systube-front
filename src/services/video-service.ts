@@ -30,4 +30,12 @@ import { environment } from "src/environments/environment";
     getVideoById(id: number) {
       return this.http.get(`${environment.apiUrl}/api/Video/GetVideoById?videoId=${id}`,  { withCredentials: true });
     }
+
+    testConnection() {
+      return this.http.get(`${environment.apiUrl}/api/Video/TestConnection`,  { withCredentials: true });
+    }
+
+    getSizeOfVideoSecondById(id: number) {
+      return this.http.get(`${environment.apiUrl}/api/Video/GetSizeOfVideoSecondById?videoId=${id}`,  { withCredentials: true });
+    }
 }

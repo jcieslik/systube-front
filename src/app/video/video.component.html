@@ -1,10 +1,26 @@
 <div class="video">
-  <div class="video-container">
-    <video width="100%" height="auto" class="video-element" [hidden]="!video1Playing" #video1 controls autoplay
-      [muted]="true">
-      <source [src]="videoSource" type="video/mp4">
+  <div class="video-container" *ngIf="videoSource">
+    <video width="100%" height="auto" class="video-element" [hidden]="!video1080pPlaying" #video1080p controls
+      preload="metadata" (waiting)="onWaitingEvent()" (seeking)="onTimeUpdateEvent()">
+      <source [src]="videoSource + '&resolution=0'" type="video/mp4">
     </video>
-    <mat-card>
+    <video width="100%" height="auto" class="video-element" [hidden]="!video720pPlaying" #video720p controls
+      preload="metadata" (waiting)="onWaitingEvent()" (seeking)="onTimeUpdateEvent()">
+      <source [src]="videoSource + '&resolution=1'" type="video/mp4">
+    </video>
+    <video width="100%" height="auto" class="video-element" [hidden]="!video480pPlaying" #video480p controls
+      preload="metadata" (waiting)="onWaitingEvent()" (seeking)="onTimeUpdateEvent()">
+      <source [src]="videoSource + '&resolution=2'" type="video/mp4">
+    </video>
+    <video width="100%" height="auto" class="video-element" [hidden]="!video360pPlaying" #video360p controls
+      preload="metadata" (waiting)="onWaitingEvent()" (seeking)="onTimeUpdateEvent()">
+      <source [src]="videoSource + '&resolution=3'" type="video/mp4">
+    </video>
+    <video width="100%" height="auto" class="video-element" [hidden]="!video240pPlaying" #video240p controls
+      preload="metadata" (waiting)="onWaitingEvent()" (seeking)="onTimeUpdateEvent()">
+      <source [src]="videoSource + '&resolution=4'" type="video/mp4">
+    </video>
+    <mat-card *ngIf="video">
       <mat-card-title>{{video.title}}</mat-card-title>
       <mat-card-subtitle>Obejrzane {{video.watchedCounter}} razy</mat-card-subtitle>
       <mat-card-content>{{video.description}}</mat-card-content>
@@ -19,14 +35,7 @@
       </mat-card>
     </div>
   </div>
-</div>
-<div class="video-small">
-  <div class="video-container">
-    <video width="100%" height="auto" class="video-element" [hidden]="!video1Playing" #video1 controls autoplay
-      [muted]="true">
-      <source [src]="videoSource" type="video/mp4">
-    </video>
-  </div>
+
   <div class="videos-small">
     <div *ngFor="let video of sidebarVideos" style="cursor: pointer;" [routerLink]="['/video/'+video.id]">
       <mat-card>
