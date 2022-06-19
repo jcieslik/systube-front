@@ -192,6 +192,7 @@ export class VideoComponent implements OnInit {
             this.currentVideo.nativeElement.currentTime = 0;
             this.currentVideo.nativeElement.preload = "none";
             this.currentVideo.nativeElement.load();
+            this.currentVideo.nativeElement.webkitExitFullscreen();
             this.currentVideo = video;
           }
           this.reducingResolution = false;
@@ -211,6 +212,7 @@ export class VideoComponent implements OnInit {
             this.currentVideo.nativeElement.currentTime = 0;
             this.currentVideo.nativeElement.preload = "none";
             this.currentVideo.nativeElement.load();
+            this.currentVideo.nativeElement.webkitExitFullscreen();
             this.currentVideo = video;
           }
           this.reducingResolution = false;
@@ -230,6 +232,7 @@ export class VideoComponent implements OnInit {
             this.currentVideo.nativeElement.currentTime = 0;
             this.currentVideo.nativeElement.preload = "none";
             this.currentVideo.nativeElement.load();
+            this.currentVideo.nativeElement.webkitExitFullscreen();
             this.currentVideo = video;
           }
           this.reducingResolution = false;
@@ -250,6 +253,7 @@ export class VideoComponent implements OnInit {
             this.currentVideo.nativeElement.currentTime = 0;
             this.currentVideo.nativeElement.preload = "none";
             this.currentVideo.nativeElement.load();
+            this.currentVideo.nativeElement.webkitExitFullscreen();
             this.currentVideo = video;
           }
           this.reducingResolution = false;
@@ -268,6 +272,7 @@ export class VideoComponent implements OnInit {
           this.currentVideo.nativeElement.currentTime = 0;
           this.currentVideo.nativeElement.preload = "none";
           this.currentVideo.nativeElement.load();
+          this.currentVideo.nativeElement.webkitExitFullscreen();
           this.currentVideo = video;
           this.reducingResolution = false;
         }
